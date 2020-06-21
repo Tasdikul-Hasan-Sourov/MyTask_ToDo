@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private TextView pageTitle,subTitle,endLine;
+    Button  addButton;
     DatabaseReference reference;
     RecyclerView resView;
     ArrayList<Mytask> list;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         pageTitle=(TextView)findViewById(R.id.pageTitle);
         subTitle=(TextView) findViewById(R.id.subTitle);
         endLine=(TextView) findViewById(R.id.endLine);
+        addButton=(Button) findViewById(R.id.buttonAdd);
         resView=(RecyclerView) findViewById(R.id.resId);
         resView.setLayoutManager(new LinearLayoutManager(this));
         list= new ArrayList<Mytask>();

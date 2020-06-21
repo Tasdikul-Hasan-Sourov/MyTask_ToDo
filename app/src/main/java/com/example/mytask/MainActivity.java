@@ -1,6 +1,7 @@
 package com.example.mytask;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.hide();
         pageTitle=(TextView)findViewById(R.id.pageTitle);
         subTitle=(TextView) findViewById(R.id.subTitle);
         endLine=(TextView) findViewById(R.id.endLine);

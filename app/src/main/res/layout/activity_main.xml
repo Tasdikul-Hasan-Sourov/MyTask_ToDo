@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="@string/no_more_tasks_to_do"
+        android:text="@string/endline"
         android:textAlignment="center"
         android:textSize="18sp" />
 

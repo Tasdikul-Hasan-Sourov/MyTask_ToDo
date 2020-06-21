@@ -3,4 +3,5 @@
     <string name="my_task">My Task</string>
     <string name="no_more_tasks_to_do">No_more_tasks_to_do</string>
     <string name="finish_your_tasks">Finish your tasks</string>
+    <string name="endline">No more tasks to do</string>
 </resources>

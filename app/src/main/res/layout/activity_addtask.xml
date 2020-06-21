@@ -75,6 +75,84 @@
 
            </LinearLayout>
 
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="15dp"
+               android:layout_marginLeft="15dp"
+               android:layout_marginTop="20dp"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Description"
+                   android:textSize="20sp"
+                   android:id="@+id/desDes"
+                   android:textColor="#120F0F"
+                   android:layout_marginBottom="10dp"/>
+
+               <EditText
+                   android:id="@+id/desEdit"
+                   android:layout_width="match_parent"
+                   android:layout_height="45dp"
+                   android:inputType="text"
+                   android:paddingLeft="10dp"
+                   android:background="@drawable/combine"
+                   android:hint="Write Description"/>
+
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="15dp"
+               android:layout_marginLeft="15dp"
+               android:layout_marginTop="20dp"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Target"
+                   android:textSize="20sp"
+                   android:id="@+id/timeline"
+                   android:textColor="#120F0F"
+                   android:layout_marginBottom="10dp"/>
+
+               <EditText
+                   android:id="@+id/timeEdit"
+                   android:layout_width="match_parent"
+                   android:layout_height="45dp"
+                   android:inputType="text"
+                   android:paddingLeft="10dp"
+                   android:background="@drawable/combine"
+                   android:hint="When will you finish?"/>
+
+           </LinearLayout>
+
        </LinearLayout>
+     <Button
+         android:id="@+id/create"
+         android:layout_marginRight="15dp"
+         android:layout_marginLeft="15dp"
+         android:text="Create Task"
+         android:textColor="#fff"
+         android:textSize="20sp"
+         android:textAllCaps="false"
+         android:layout_width="match_parent"
+         android:background="@drawable/create"
+         android:layout_height="55dp"
+         android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/cancel"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="Cancel"
+        android:textColor="#fff"
+        android:background="@drawable/cancel"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="14dp"/>
 
 </LinearLayout>

@@ -4,4 +4,7 @@
     <string name="no_more_tasks_to_do">No_more_tasks_to_do</string>
     <string name="finish_your_tasks">Finish your tasks</string>
     <string name="endline">No more tasks to do</string>
+    <string name="eat_break_fast">Eat Break fast</string>
+    <string name="today">Today</string>
+    <string name="eat_a_healthy_diet">Eat a healthy diet</string>
 </resources>

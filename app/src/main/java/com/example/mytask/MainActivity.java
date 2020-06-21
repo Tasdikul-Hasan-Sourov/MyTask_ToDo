@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
         resView.setLayoutManager(new LinearLayoutManager(this));
         list= new ArrayList<Mytask>();
-        reference= FirebaseDatabase.getInstance().getReference().child("MyTask");
+        reference= FirebaseDatabase.getInstance().getReference().child("Mytask");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

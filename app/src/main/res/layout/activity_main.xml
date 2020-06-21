@@ -30,7 +30,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center_horizontal"
                     android:text="@string/my_task"
-                    android:textColor="#E4DEDE"
+                    android:textColor="#fff"
                     android:textSize="35sp" />
 
                 <TextView

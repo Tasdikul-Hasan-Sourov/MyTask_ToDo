@@ -1,7 +1,9 @@
 package com.example.mytask;
 
 public class Mytask {
-    String taskTitle, taskDes, taskDate;
+   private String taskTitle;
+   private String taskDes;
+   private String taskDate;
 
     public Mytask() {
 
@@ -37,3 +39,4 @@ public class Mytask {
         this.taskDate = taskDate;
     }
 }
+

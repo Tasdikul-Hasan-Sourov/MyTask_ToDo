@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +44,24 @@ public class EditTask extends AppCompatActivity {
         timeEdit.setText(getIntent().getStringExtra("taskDate"));
         final String keykeyTask=getIntent().getStringExtra("keyTask");
         ref= FirebaseDatabase.getInstance().getReference().child("Mytask").child(keykeyTask);
+
+        deleteTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful ()){
+                            Intent s= new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(s);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Not deleted",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
         saveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

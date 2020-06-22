@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
-                    android:text="@string/finish_your_tasks"
+                    android:text="Add your tasks"
                     android:textColor="#473838"
                     android:textSize="20sp" />
             </LinearLayout>

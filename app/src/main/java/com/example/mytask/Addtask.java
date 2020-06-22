@@ -46,9 +46,9 @@ public class Addtask extends AppCompatActivity {
               String title= titleDes.getText().toString().trim();
               String description= desEdit.getText().toString().trim();
               String target= timeEdit.getText().toString().trim();
-              String key= reference.push().getKey();
-              Mytask mytask =new Mytask(title,description,target);
-              reference.child(key).setValue(mytask);
+              String keyTask= reference.push().getKey();
+              Mytask mytask =new Mytask(title,description,target,keyTask);
+              reference.child(keyTask).setValue(mytask);
                 Toast.makeText(getApplicationContext(),"Database Saved", Toast.LENGTH_SHORT).show();
                 Intent a= new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(a);

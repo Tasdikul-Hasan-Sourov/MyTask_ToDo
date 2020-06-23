@@ -58,6 +58,7 @@ public class Addtask extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Database Saved", Toast.LENGTH_SHORT).show();
                 Intent a= new Intent(getApplicationContext(),MainActivity2.class);
                 startActivity(a);
+                finish();
             }
         });
 
@@ -66,6 +67,7 @@ public class Addtask extends AppCompatActivity {
             public void onClick(View v) {
                 Intent x=new Intent(getApplicationContext(),MainActivity2.class);
                 startActivity(x);
+                finish();
             }
         });
     }

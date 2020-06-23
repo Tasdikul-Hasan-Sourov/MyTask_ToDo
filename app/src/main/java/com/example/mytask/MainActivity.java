@@ -1,6 +1,7 @@
 package com.example.mytask;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText signinEmail, signinPassword;
     private TextView signinText;
     private Button signinButton;
-    //private ProgressBar progressbare;
+    private ProgressBar progressbare;
     private FirebaseAuth mAuth;
     FirebaseUser user;
 
@@ -34,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //ActionBar actionBar= getSupportActionBar();
-        //actionBar.hide();
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.hide();
         this.setTitle("Sign in Activity");
         signinEmail =(EditText) findViewById(R.id.email);
         signinPassword=(EditText) findViewById(R.id.password);
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signinButton=(Button) findViewById(R.id.buttonin);
         signinText.setOnClickListener(this);
         signinButton.setOnClickListener(this);
-        //progressbare=(ProgressBar) findViewById(R.id.progressBar2);
+        progressbare=(ProgressBar) findViewById(R.id.progressBar2);
         mAuth = FirebaseAuth.getInstance();
         user= FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -102,15 +103,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             signinPassword.requestFocus();
             return;
         }
-        //  progressbare.setVisibility(View.VISIBLE);
+          progressbare.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                //  progressbare.setVisibility(View.INVISIBLE);
+                 progressbare.setVisibility(View.INVISIBLE);
                 if(task.isSuccessful()){
                     Intent intent=new Intent(getApplicationContext(),MainActivity2.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Login Un Successful",Toast.LENGTH_SHORT).show();

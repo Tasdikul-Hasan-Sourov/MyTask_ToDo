@@ -60,6 +60,7 @@ public class EditTask extends AppCompatActivity {
                         if(task.isSuccessful ()){
                             Intent s= new Intent(getApplicationContext(),MainActivity2.class);
                             startActivity(s);
+                            finish();
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"Not deleted",Toast.LENGTH_SHORT).show();
@@ -81,6 +82,7 @@ public class EditTask extends AppCompatActivity {
 
                        Intent a=new Intent(getApplicationContext(),MainActivity2.class);
                        startActivity(a);
+                       finish();
 
                    }
 

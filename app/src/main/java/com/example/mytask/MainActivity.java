@@ -1,72 +1,107 @@
 package com.example.mytask;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class MainActivity extends AppCompatActivity {
+    private EditText signinEmail, signinPassword;
+    private TextView signinText;
+    private Button signinButton;
+    //private ProgressBar progressbare;
+    private FirebaseAuth mAuth;
 
-    private TextView pageTitle,subTitle,endLine;
-    Button  addButton;
-    DatabaseReference reference;
-    RecyclerView resView;
-    ArrayList<Mytask> list;
-    taskAdapter taskAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActionBar actionBar= getSupportActionBar();
-        actionBar.hide();
-        pageTitle=(TextView)findViewById(R.id.pageTitle);
-        subTitle=(TextView) findViewById(R.id.subTitle);
-        endLine=(TextView) findViewById(R.id.endLine);
-        addButton=(Button) findViewById(R.id.buttonAdd);
-        resView=(RecyclerView) findViewById(R.id.resId);
+        //ActionBar actionBar= getSupportActionBar();
+        //actionBar.hide();
+        this.setTitle("Sign in Activity");
+        signinEmail =(EditText) findViewById(R.id.email);
+        signinPassword=(EditText) findViewById(R.id.password);
+        signinText=(TextView) findViewById(R.id.textViewin);
+        signinButton=(Button) findViewById(R.id.buttonin);
+        signinText.setOnClickListener(this);
+        signinButton.setOnClickListener(this);
+        //progressbare=(ProgressBar) findViewById(R.id.progressBar2);
+        mAuth = FirebaseAuth.getInstance();
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),Addtask.class);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonin:
+                userLogin();
+                break;
+            case  R.id.textViewin:
+                Intent intent=new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
-            }
-        });
-        resView.setLayoutManager(new LinearLayoutManager(this));
-        list= new ArrayList<Mytask>();
-        reference= FirebaseDatabase.getInstance().getReference().child("Mytask");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Mytask p = dataSnapshot1.getValue(Mytask.class);
-                    list.add(p);
-                }
-                taskAdapter = new taskAdapter(MainActivity.this, list);
-                resView.setAdapter(taskAdapter);
-                taskAdapter.notifyDataSetChanged();
-            }
+                break;
+        }
+    }
 
+    private void userLogin() {
+        String email=signinEmail.getText().toString().trim();
+        String password=signinPassword.getText().toString().trim();
+
+        if(email.isEmpty())
+        {
+            signinEmail.setError("Enter an email address");
+            signinEmail.requestFocus();
+            return;
+        }
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            signinEmail.setError("Enter a valid email address");
+            signinEmail.requestFocus();
+            return;
+        }
+
+        //checking the validity of the password
+        if(email.isEmpty())
+        {
+            signinPassword.setError("Enter a password");
+            signinPassword.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+            signinPassword.setError("Minimum password length should be 6");
+            signinPassword.requestFocus();
+            return;
+        }
+        //  progressbare.setVisibility(View.VISIBLE);
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(),"No Data", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                //  progressbare.setVisibility(View.INVISIBLE);
+                if(task.isSuccessful()){
+                    Intent intent=new Intent(getApplicationContext(),MainActivity2.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Login Un Successful",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

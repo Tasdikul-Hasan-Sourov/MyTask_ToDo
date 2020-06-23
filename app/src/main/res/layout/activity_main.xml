@@ -18,70 +18,107 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp">
-                <TextView
-                    android:id="@+id/pageTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/my_task"
-                    android:textColor="#fff"
-                    android:textSize="35sp" />
 
-                <TextView
-                    android:id="@+id/subTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:text="Add your tasks"
-                    android:textColor="#473838"
-                    android:textSize="20sp" />
-            </LinearLayout>
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="38dp"
-                    android:id="@+id/buttonAdd"
-                    android:text="+"
-                    android:background="@drawable/addshape"
-                    android:textSize="35sp"
-                    android:textColor="#fff"
-                    android:textAlignment="center"
-                    android:gravity="center_horizontal"/>
+            <TextView
+
+                android:id="@+id/pageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:text="Sign In"
+                android:textColor="#E4DEDE"
+                android:textSize="30sp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="20dp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/resId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:background="@drawable/reshape"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="-60dp"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="-60dp">
 
-    <TextView
-        android:id="@+id/endLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="@string/endline"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="20sp"
+                android:id="@+id/titleText"
+                android:textColor="#120F0F"
+                android:layout_marginBottom="10dp"/>
 
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:background="@drawable/combine"
+                android:hint="Email"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="20sp"
+                android:id="@+id/desDes"
+                android:textColor="#120F0F"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:background="@drawable/combine"
+                android:hint="Password"/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/buttonin"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="Sign In"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:background="@drawable/create"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewin"
+            android:text="Signup"/>
+
+    </LinearLayout>
 </LinearLayout>

@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 public class EditTask extends AppCompatActivity {
     EditText titleDes,desEdit,timeEdit;
     Button saveTask, deleteTask;
+    FirebaseUser user;
     DatabaseReference ref;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,10 @@ public class EditTask extends AppCompatActivity {
         titleDes.setText(getIntent().getStringExtra("taskTitle"));
         desEdit.setText(getIntent().getStringExtra("taskDes"));
         timeEdit.setText(getIntent().getStringExtra("taskDate"));
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        uid=user.getUid();
         final String keykeyTask=getIntent().getStringExtra("keyTask");
-        ref= FirebaseDatabase.getInstance().getReference().child("Mytask").child(keykeyTask);
+        ref= FirebaseDatabase.getInstance().getReference().child("Mytask").child(uid).child(keykeyTask);
 
         deleteTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +58,7 @@ public class EditTask extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful ()){
-                            Intent s= new Intent(getApplicationContext(),MainActivity.class);
+                            Intent s= new Intent(getApplicationContext(),MainActivity2.class);
                             startActivity(s);
                         }
                         else{
@@ -73,7 +79,7 @@ public class EditTask extends AppCompatActivity {
                        dataSnapshot.getRef().child("taskDate").setValue(timeEdit.getText().toString());
                        dataSnapshot.getRef().child("keyTask").setValue(keykeyTask);
 
-                       Intent a=new Intent(getApplicationContext(),MainActivity.class);
+                       Intent a=new Intent(getApplicationContext(),MainActivity2.class);
                        startActivity(a);
 
                    }

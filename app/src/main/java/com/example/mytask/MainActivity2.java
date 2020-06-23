@@ -27,6 +27,7 @@ import java.util.ArrayList;
 public class MainActivity2 extends AppCompatActivity {
 
     private TextView pageTitle,subTitle,endLine;
+    int backButtonCount;
     Button  addButton;
     DatabaseReference reference;
     FirebaseUser user;
@@ -77,5 +78,18 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"No Data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backButtonCount >= 1){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);}
+        else{
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+            backButtonCount++;
+        }
     }
 }

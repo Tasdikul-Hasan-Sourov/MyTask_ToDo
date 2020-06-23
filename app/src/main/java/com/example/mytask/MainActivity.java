@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "";
     private EditText signinEmail, signinPassword;
     private TextView signinText;
     private Button signinButton;
@@ -53,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         } else {
-            Intent l=new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(l);
+            Log.d(TAG, "onAuthStateChanged:signed_out");
         }
 
 

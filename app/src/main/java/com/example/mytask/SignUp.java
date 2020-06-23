@@ -1,6 +1,7 @@
 package com.example.mytask;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,6 +32,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.hide();
         this.setTitle("Sign up Activity");
         signupEmail =(EditText) findViewById(R.id.email);
         signupPassword=(EditText) findViewById(R.id.password);

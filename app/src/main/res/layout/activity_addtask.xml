@@ -126,6 +126,7 @@
                    android:layout_height="45dp"
                    android:inputType="text"
                    android:paddingLeft="10dp"
+                   android:maxLength="10"
                    android:background="@drawable/combine"
                    android:hint="When will you finish?"/>
 

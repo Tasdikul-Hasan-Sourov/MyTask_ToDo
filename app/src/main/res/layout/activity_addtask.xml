@@ -69,6 +69,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="45dp"
                       android:inputType="text"
+                      android:maxLength="15"
                       android:paddingLeft="10dp"
                       android:background="@drawable/combine"
                       android:hint="What you Want to do?"/>
@@ -97,6 +98,7 @@
                    android:layout_height="45dp"
                    android:inputType="text"
                    android:paddingLeft="10dp"
+                   android:maxLength="25"
                    android:background="@drawable/combine"
                    android:hint="Write Description"/>
 
